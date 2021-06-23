@@ -15,5 +15,15 @@ class HighlightRepository extends AbstractRepository
     {
         return "Website\\Wishlist\\WishlistModel";
     }
+
+    public function addWishlist()
+    {
+
+    }
+
+    public function deleteWishlist()
+    {
+        
+    }
 }
 ?>
