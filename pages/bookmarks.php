@@ -11,13 +11,7 @@
 <body>
 <?php include "../components/header.php";?>
 
-<div style="display:flex;">
-    <?php include "../components/filter.html";?>
-
-    <div style="display:flex;flex-direction:column;flex-grow:1;">
-        <?php include "../components/preview.php";?>
-    </div>
-</div>
+<?php include "../components/preview.php";?>
 
 </body>
 </html>
