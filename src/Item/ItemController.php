@@ -7,11 +7,13 @@ use Website\User\UserRepository;
 use Website\Highlight\HighlightRepository;
 use Website\Picture\PictureRepository;
 use Website\CrossSelling\CrossSellingRepository;
+use Website\Wishlist\WishlistRepository;
 
 class ItemController extends AbstractController
 {
     public function __construct(LoginService $loginService, ItemRepository $itemRepository, UserRepository $userRepository, 
-    HighlightRepository $highlightRepository, PictureRepository $pictureRepository,  CrossSellingRepository $crossSellingRepository)
+    HighlightRepository $highlightRepository, PictureRepository $pictureRepository,  CrossSellingRepository $crossSellingRepository,
+    WishlistRepository $wishlistRepository, )
     {
         $this->loginService = $loginService;
         $this->itemRepository = $itemRepository;

@@ -8,6 +8,7 @@ use Website\User\UserRepository;
 use Website\Highlight\HighlightRepository;
 use Website\Picture\PictureRepository;
 use Website\CrossSelling\CrossSellingRepository;
+use Website\Wishlist\WishlistRepository;
 use Website\Item\ItemController;
 use Website\User\LoginController;
 use Website\User\LoginService;
@@ -42,7 +43,8 @@ class Container
                     $this->make('userRepository'),
                     $this->make('highlightRepository'),
                     $this->make('pictureRepository'),
-                    $this->make('crossSellingRepository')
+                    $this->make('crossSellingRepository'),
+                    $this->make('wishlistRepository'),
                 );
             },
             'userRepository' => function()
@@ -72,6 +74,12 @@ class Container
             'crossSellingRepository' => function()
             {
                 return new CrossSellingRepository(
+                    $this->make("pdo")
+                );
+            },
+            'wishlistRepository' => function()
+            {
+                return new WishlistRepository(
                     $this->make("pdo")
                 );
             },

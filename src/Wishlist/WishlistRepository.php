@@ -1,10 +1,10 @@
 <?php
-namespace Website\Highlight;
+namespace Website\Wishlist;
 
 use PDO;
 use Website\Core\AbstractRepository;
 
-class HighlightRepository extends AbstractRepository
+class WishlistRepository extends AbstractRepository
 {
     public function getTableName()
     {
@@ -23,7 +23,7 @@ class HighlightRepository extends AbstractRepository
 
     public function deleteWishlist()
     {
-        
+
     }
 }
 ?>
