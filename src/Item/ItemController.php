@@ -60,8 +60,7 @@ class ItemController extends AbstractController
     {
         $this->loginService->isLocked();
         $this->loginService->check();
-        $items = $this->itemRepository->all(); 
-    
+        $items = $this->itemRepository->getWishlist($_SESSION['id']); 
 
         $this->render("bookmarks", [
             'items' => $items,
@@ -264,7 +263,7 @@ class ItemController extends AbstractController
         $item_id = $_GET['id'];
         $user_id = $_SESSION['id'];
 
-        if($this->wishlistRepository->getWishlist($item_id, $user_id)){
+        if($this->wishlistRepository->getWishlistItem($item_id, $user_id)){
             $this->wishlistRepository->deleteWishlist($item_id, $user_id);
             header("Location: merkliste");
         } else {

@@ -3,6 +3,7 @@ namespace Website\Item;
 
 use PDO;
 use Website\Core\AbstractRepository;
+use Website\Wishlist\WishlistRepository;
 
 class ItemRepository extends AbstractRepository
 {
@@ -111,6 +112,23 @@ class ItemRepository extends AbstractRepository
         $items = $stmt->fetchAll(PDO::FETCH_CLASS, $model);
         return($items);
         
+    }
+
+    public function getWishlist($user_id)
+    {
+        $table = $this->getTableName();
+        $model = $this->getModelName();
+
+        $stmt = $this->pdo->prepare(
+            "SELECT * FROM items 
+            LEFT JOIN wishlist ON wishlist.item_id = items.id 
+            WHERE wishlist.user_id = :user_id ");
+        $stmt->execute([
+            'user_id' => $user_id,
+        ]);
+
+        $items = $stmt->fetchAll(PDO::FETCH_CLASS, $model);
+        return($items);
     }
 
     // gets all items by serach
