@@ -52,7 +52,13 @@
             , 
             <?php echo e($user->city); ?></span>  
 
-            <a href="change_wishlist?id=<?php echo e($item->id); ?>"><i class="far fa-heart"></i></a>
+            <a href="change_wishlist?id=<?php echo e($item->id); ?>">
+            <?php if($this->wishlistRepository->getWishlist($item->id, $_SESSION['id'])): ?>
+                <i class="fas fa-heart"></i>
+            <?php else: ?>
+                <i class="far fa-heart"></i>
+            <?php endif; ?>
+            </a>
             
         </p>
         
