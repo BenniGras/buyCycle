@@ -88,7 +88,7 @@ $routes = [
         'controller' => 'itemController',
         'method' => 'highlightDashboard'
     ],
-    '/change_merkliste' => [
+    '/change_wishlist' => [
         'controller' => 'itemController',
         'method' => 'changeWishlist'
     ],

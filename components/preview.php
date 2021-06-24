@@ -52,7 +52,7 @@
             , 
             <?php echo e($user->city); ?></span>  
 
-            <a href="change_merkliste?id=<?php echo e($item->id); ?>"><i class="far fa-heart"></i></a>
+            <a href="change_wishlist?id=<?php echo e($item->id); ?>"><i class="far fa-heart"></i></a>
             
         </p>
         
