@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../../CSS/header.css">
     <link rel="stylesheet" href="../../CSS/filter.css">
     <link rel="stylesheet" href="../../CSS/preview.css">
+    <script src="https://kit.fontawesome.com/042b7aa4e1.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <?php include "../components/header.php";?>
