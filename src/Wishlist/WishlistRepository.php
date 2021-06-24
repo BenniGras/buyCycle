@@ -29,7 +29,7 @@ class WishlistRepository extends AbstractRepository
         ]);
     }
 
-    public function getWishlist($item_id, $user_id)
+    public function getWishlistItem($item_id, $user_id)
     {
         $table = $this->getTableName();
         $model = $this->getModelName();
