@@ -6,14 +6,18 @@
     ?>
 
     <?php if($highlight): ?>
-    <a class="preview highlight" href="artikel?id=<?php echo e($item->id); ?>">
+    <div class="preview highlight">
     <?php else: ?>
-    <a class="preview" href="artikel?id=<?php echo e($item->id); ?>">
+    <div class="preview">
     <?php endif; ?>
-        <img class="image" src="../../pictures/<?php echo e($item->picture) ?>">
+        <a href="artikel?id=<?php echo e($item->id); ?>">
+            <img class="image" src="../../pictures/<?php echo e($item->picture) ?>">
+        </a>
         <div class="text">
 
-        <h1 style="margin: 0;"><?php echo e($item->title); ?></h1> 
+        <a href="artikel?id=<?php echo e($item->id); ?>">
+            <h1 style="margin: 0;"><?php echo e($item->title); ?></h1>
+        </a>
     
         <?php $len = strlen($item->description);?>
 
@@ -54,7 +58,6 @@
         
          
         </div>
-
-    </a>
+    </div>
 
 <?php endforeach; ?>
