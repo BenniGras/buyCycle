@@ -13,7 +13,7 @@ class ItemController extends AbstractController
 {
     public function __construct(LoginService $loginService, ItemRepository $itemRepository, UserRepository $userRepository, 
     HighlightRepository $highlightRepository, PictureRepository $pictureRepository,  CrossSellingRepository $crossSellingRepository,
-    WishlistRepository $wishlistRepository, )
+    WishlistRepository $wishlistRepository)
     {
         $this->loginService = $loginService;
         $this->itemRepository = $itemRepository;
@@ -256,6 +256,11 @@ class ItemController extends AbstractController
             'item' => $item,
             'data' => $data,
         ]);
+    }
+
+    public function changeWishlist()
+    {
+        echo "Es funktioniert";
     }
 
 }
