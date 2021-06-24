@@ -3,7 +3,6 @@ namespace Website\Item;
 
 use PDO;
 use Website\Core\AbstractRepository;
-use Website\Wishlist\WishlistRepository;
 
 class ItemRepository extends AbstractRepository
 {
