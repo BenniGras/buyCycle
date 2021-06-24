@@ -16,14 +16,46 @@ class WishlistRepository extends AbstractRepository
         return "Website\\Wishlist\\WishlistModel";
     }
 
-    public function addWishlist()
+    public function addWishlist($item_id, $user_id)
     {
+        $table= $this->getTableName();
 
+        $stmt = $this->pdo->prepare("INSERT INTO `{$table}`
+        (`item_id`, `user_id`) VALUES (:item_id, :user_id)");
+
+        $stmt->execute([
+            'item_id' => $item_id,
+            'user_id' => $user_id,
+        ]);
     }
 
-    public function deleteWishlist()
+    public function getWishlist($item_id, $user_id)
     {
+        $table = $this->getTableName();
+        $model = $this->getModelName();
 
+        $stmt = $this->pdo->prepare("SELECT * FROM `$table` WHERE item_id = :item_id AND user_id = :user_id");
+        $stmt->execute([
+            'user_id' => $user_id,
+            'item_id' => $item_id,
+        ]);
+
+        $stmt->setFetchMode(PDO::FETCH_CLASS, $model);
+        $wishlist = $stmt->fetch(PDO::FETCH_CLASS);
+
+        return $wishlist;
+    }
+
+    public function deleteWishlist($item_id, $user_id)
+    {
+        $table= $this->getTableName();
+
+        $stmt = $this->pdo->prepare("DELETE FROM `{$table}` WHERE item_id = :item_id AND user_id = :user_id");
+
+        $stmt->execute([
+            'item_id' => $item_id,
+            'user_id' => $user_id,
+        ]);
     }
 }
 ?>

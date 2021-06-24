@@ -21,6 +21,7 @@ class ItemController extends AbstractController
         $this->highlightRepository = $highlightRepository;
         $this->pictureRepository = $pictureRepository;
         $this->crossSellingRepository = $crossSellingRepository;
+        $this->wishlistRepository = $wishlistRepository;
     }
 
     public function addItem()
@@ -260,7 +261,17 @@ class ItemController extends AbstractController
 
     public function changeWishlist()
     {
-        echo "Es funktioniert";
+        $item_id = $_GET['id'];
+        $user_id = $_SESSION['id'];
+
+        if($this->wishlistRepository->getWishlist($item_id, $user_id)){
+            $this->wishlistRepository->deleteWishlist($item_id, $user_id);
+            header("Location: merkliste");
+        } else {
+            $this->wishlistRepository->addWishlist($item_id, $user_id);
+            header("Location: merkliste");
+        }
+        
     }
 
 }
