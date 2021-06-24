@@ -88,6 +88,10 @@ $routes = [
         'controller' => 'itemController',
         'method' => 'highlightDashboard'
     ],
+    '/change_merkliste' => [
+        'controller' => 'itemController',
+        'method' => 'changeWishlist'
+    ],
 ];
 if(isset($routes[$pathInfo])) {
     $route = $routes[$pathInfo];
