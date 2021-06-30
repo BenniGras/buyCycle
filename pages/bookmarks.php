@@ -7,17 +7,12 @@
     <link rel="stylesheet" href="../../CSS/header.css">
     <link rel="stylesheet" href="../../CSS/filter.css">
     <link rel="stylesheet" href="../../CSS/preview.css">
+    <script src="https://kit.fontawesome.com/042b7aa4e1.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <?php include "../components/header.php";?>
 
-<div style="display:flex;">
-    <?php include "../components/filter.html";?>
-
-    <div style="display:flex;flex-direction:column;flex-grow:1;">
-        <?php include "../components/preview.php";?>
-    </div>
-</div>
+<?php include "../components/preview.php";?>
 
 </body>
 </html>

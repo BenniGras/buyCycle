@@ -7,11 +7,13 @@ use Website\User\UserRepository;
 use Website\Highlight\HighlightRepository;
 use Website\Picture\PictureRepository;
 use Website\CrossSelling\CrossSellingRepository;
+use Website\Wishlist\WishlistRepository;
 
 class ItemController extends AbstractController
 {
     public function __construct(LoginService $loginService, ItemRepository $itemRepository, UserRepository $userRepository, 
-    HighlightRepository $highlightRepository, PictureRepository $pictureRepository,  CrossSellingRepository $crossSellingRepository)
+    HighlightRepository $highlightRepository, PictureRepository $pictureRepository,  CrossSellingRepository $crossSellingRepository,
+    WishlistRepository $wishlistRepository)
     {
         $this->loginService = $loginService;
         $this->itemRepository = $itemRepository;
@@ -19,6 +21,7 @@ class ItemController extends AbstractController
         $this->highlightRepository = $highlightRepository;
         $this->pictureRepository = $pictureRepository;
         $this->crossSellingRepository = $crossSellingRepository;
+        $this->wishlistRepository = $wishlistRepository;
     }
 
     public function addItem()
@@ -57,8 +60,7 @@ class ItemController extends AbstractController
     {
         $this->loginService->isLocked();
         $this->loginService->check();
-        $items = $this->itemRepository->all(); 
-    
+        $items = $this->itemRepository->getWishlist($_SESSION['id']); 
 
         $this->render("bookmarks", [
             'items' => $items,
@@ -254,6 +256,21 @@ class ItemController extends AbstractController
             'item' => $item,
             'data' => $data,
         ]);
+    }
+
+    public function changeWishlist()
+    {
+        $item_id = $_GET['id'];
+        $user_id = $_SESSION['id'];
+
+        if($this->wishlistRepository->getWishlistItem($item_id, $user_id)){
+            $this->wishlistRepository->deleteWishlist($item_id, $user_id);
+            header("Location: merkliste");
+        } else {
+            $this->wishlistRepository->addWishlist($item_id, $user_id);
+            header("Location: merkliste");
+        }
+        
     }
 
 }
